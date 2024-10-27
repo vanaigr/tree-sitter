@@ -617,7 +617,7 @@ TSNode ts_node_child_with_descendant(TSNode self, TSNode descendant) {
       // for the loop condition, and that will continue with the next *non-zero-width* sibling.
       TSNode old = self;
       // While the next sibling is a zero-width token
-      while (ts_node_child_iterator_next_sibling_is_empty_adjacent(&iter, self)) {
+      while (start_byte == end_byte && ts_node_start_byte(self) == ts_node_end_byte(self) && ts_node_start_byte(self) == start_byte && ts_node__is_relevant(self)) {
         TSNode current_node = ts_node_child_with_descendant(self, descendant);
         // If the target child is in self, return it
         if (!ts_node_is_null(current_node)) {
